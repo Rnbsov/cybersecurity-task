@@ -36,20 +36,3 @@ def decrypt_message(key, iv, encrypted_message):
     unpadder = padding.PKCS7(128).unpadder()
     message = unpadder.update(padded_message) + unpadder.finalize()
     return message.decode()
-
-# Основной код для демонстрации
-if __name__ == "__main__":
-    # Генерация ключа и IV
-    key, iv = generate_key_iv()
-
-    # Оригинальное сообщение
-    original_message = "Это тестовое сообщение."
-    print(f"Оригинальное сообщение: {original_message}")
-
-    # Шифрование
-    encrypted_message = encrypt_message(key, iv, original_message)
-    print(f"Зашифрованное сообщение (в байтах): {encrypted_message}")
-
-    # Расшифровка
-    decrypted_message = decrypt_message(key, iv, encrypted_message)
-    print(f"Расшифрованное сообщение: {decrypted_message}")
